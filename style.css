@@ -1,0 +1,212 @@
+:root {
+  --main-color: rgb(113,130,255);
+  --secondary-color: rgb(247,96,125);
+  --accent-color: rgb(255,179,137);
+  --background-color: rgb(45, 45, 45);
+  --secondary-background-color: rgb(15, 15, 15);
+  --light-text-color: white;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--light-text-color);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 10px 25px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-right: 25px;
+}
+
+.logo img {
+  height: 90px;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: .8fr min-content 1fr;
+  gap: 5px 10px;
+  place-items: center;
+}
+
+.user-info img {
+  height: 30px;
+}
+
+.user-info button {
+  background-color: var(--main-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--light-text-color);
+  font-weight: bold;
+}
+
+h1,
+h3,
+h4 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+.content {
+  background-color: var(--secondary-background-color);
+  flex: 1;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 15px;
+  padding: 25px;
+  justify-items: center;
+}
+
+.book-card,
+.new-card {
+  background-color: var(--background-color);
+  width: clamp(185px, 100%, 225px);
+  box-sizing: border-box;
+  padding: 25px;
+  padding-bottom: 10px;
+  border: solid transparent;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-card:hover {
+  border-color: rgba(255, 255, 255, 0.05);
+  background-color: rgb(50, 50, 50);
+}
+
+.new-card:hover {
+  border-color: rgba(255, 255, 255, 0.05);
+  background-color: rgb(25, 25, 25);
+}
+
+.card-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-content a {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  padding: 0px;
+  height: 25px;
+  top: 7.5px;
+  right: 7.5px;
+}
+
+.read-button {
+  background-color: transparent;
+  border: none;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--light-text-color);
+  margin: 20px 0px;
+}
+
+.read-button h4 {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  height: 25px;
+}
+
+.delete-button img,
+.read-button img {
+  height: 25px;
+}
+
+.delete-button img:hover,
+.read-button:hover {
+  cursor: pointer;
+}
+
+.book-icon {
+  height: 80px;
+  margin: 10px;
+  align-self: center;
+  transition: .3s ease-out;
+}
+
+.book-icon:hover {
+  transform: rotate(-10deg);
+}
+
+.new-card {
+  padding: 0px;
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.new-card img {
+  height: 80px;
+}
+
+.new-card button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0%;
+  border: none;
+  z-index: 1;
+}
+
+.new-card button:hover {
+  cursor: pointer;
+}
