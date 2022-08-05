@@ -37,12 +37,15 @@ function createBookCard(bookObject, index) {
   readButton.classList.add('read-button');
   if (!bookObject.haveRead) {
     readButton.classList.add('unread');
+    readButton.textContent = 'Unread';
+  }
+  else {
+    readButton.textContent = 'Read';
   }
 
   title.textContent = bookObject.title;
   author.textContent = `By: ${bookObject.author}`;
   pages.textContent = `Pages: ${bookObject.pages}`;
-  readButton.textContent = 'Unread';
 
   deleteButton.addEventListener('click', deleteThisCard);
   readButton.addEventListener('click', changeReadStatus);
@@ -155,9 +158,8 @@ function undoSubmitCardForm() {
   bookGrid.classList.remove('remove-from-display');
 }
 
-// Run functions below here====================
 
-addBookToLibrary('Poop', 'Turd Burglar', '200');
-addBookToLibrary('Schmoop', 'Schmoop Man', '275');
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', '350');
+addBookToLibrary('Harry Potter', 'J.K. Rowling', '475');
 displayLibrary();
 
