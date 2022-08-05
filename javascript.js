@@ -13,7 +13,7 @@ function addBookToLibrary(title, author, pages, haveRead = false) {
   myLibrary.push(new Book(title, author, pages, haveRead));
 }
 
-function createBookCard(bookObject) {
+function createBookCard(bookObject, index) {
   const bookCard = document.createElement('div');
   const deleteButton = document.createElement('button');
   const deleteButtonImg = document.createElement('img');
@@ -42,6 +42,8 @@ function createBookCard(bookObject) {
   pages.textContent = `Pages: ${bookObject.pages}`;
   readButton.textContent = 'Unread';
 
+  deleteButton.addEventListener('click', deleteThisCard);
+
   deleteButton.appendChild(deleteButtonImg);
   bookCard.appendChild(deleteButton);
   bookCard.appendChild(contentDiv);
@@ -53,6 +55,14 @@ function createBookCard(bookObject) {
   bookCard.appendChild(readButton);
 
   return bookCard;
+
+  function deleteThisCard() {
+    removeAllChildren(bookCard);
+    bookGrid.removeChild(bookCard);
+    console.log(myLibrary[index]);
+    myLibrary.splice(index, 1);
+    displayLibrary();
+  }
 }
 
 function createNewBookButtonCard() {
@@ -77,7 +87,7 @@ function displayBookCard(newBookCard) {
 function displayLibrary() {
   removeAllChildren(bookGrid);
   for (let book in myLibrary) {
-    let newBook = createBookCard(myLibrary[book]);
+    let newBook = createBookCard(myLibrary[book], book);
     displayBookCard(newBook);
   }
   displayBookCard(createNewBookButtonCard());
@@ -92,10 +102,18 @@ function removeAllChildren(parent) {
 function displayNewCardForm() {
   const newCardForm = document.querySelector('.form-container');
   const submitButton = document.getElementById('submit-button');
+  const deleteButton = document.querySelector('.new-book-form').firstChild.nextSibling;
+  const title = document.getElementById('title-input');
+  const author = document.getElementById('author-input');
+  const pages = document.getElementById('pages-input');
   
+  title.value = '';
+  author.value = '';
+  pages.value = '';
   bookGrid.classList.add('remove-from-display');
   newCardForm.classList.remove('remove-from-display');
   submitButton.addEventListener('click', submitNewCardForm);
+  deleteButton.addEventListener('click', undoSubmitCardForm);
 }
 
 function submitNewCardForm() {
@@ -110,9 +128,16 @@ function submitNewCardForm() {
   displayLibrary();
 }
 
+function undoSubmitCardForm() {
+  const newCardForm = document.querySelector('.form-container');
+
+  newCardForm.classList.add('remove-from-display');
+  bookGrid.classList.remove('remove-from-display');
+}
+
 // Run functions below here====================
 
-addBookToLibrary('Poop', 'Turd Burglar', '200');
-addBookToLibrary('Schmoop', 'Schmoop Man', '275');
+// addBookToLibrary('Poop', 'Turd Burglar', '200');
+// addBookToLibrary('Schmoop', 'Schmoop Man', '275');
 displayLibrary();
 
