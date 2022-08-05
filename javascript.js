@@ -55,11 +55,64 @@ function createBookCard(bookObject) {
   return bookCard;
 }
 
+function createNewBookButtonCard() {
+  const newBookButtonCard = document.createElement('div');
+  const newBookButton = document.createElement('button');
+  const newBookImg = document.createElement('img');
+
+  newBookButtonCard.classList.add('new-card');
+  newBookImg.src = './images/add.png';
+  newBookImg.alt = 'new card button';
+  newBookButton.addEventListener('click', displayNewCardForm);
+
+  newBookButtonCard.appendChild(newBookButton);
+  newBookButtonCard.appendChild(newBookImg);
+  return newBookButtonCard;
+}
+
 function displayBookCard(newBookCard) {
   bookGrid.appendChild(newBookCard);
 }
 
+function displayLibrary() {
+  removeAllChildren(bookGrid);
+  for (let book in myLibrary) {
+    let newBook = createBookCard(myLibrary[book]);
+    displayBookCard(newBook);
+  }
+  displayBookCard(createNewBookButtonCard());
+}
+
+function removeAllChildren(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function displayNewCardForm() {
+  const newCardForm = document.querySelector('.form-container');
+  const submitButton = document.getElementById('submit-button');
+  
+  bookGrid.classList.add('remove-from-display');
+  newCardForm.classList.remove('remove-from-display');
+  submitButton.addEventListener('click', submitNewCardForm);
+}
+
+function submitNewCardForm() {
+  const title = document.getElementById('title-input');
+  const author = document.getElementById('author-input');
+  const pages = document.getElementById('pages-input');
+  const newCardForm = document.querySelector('.form-container');
+
+  addBookToLibrary(title.value, author.value, pages.value);
+  newCardForm.classList.add('remove-from-display');
+  bookGrid.classList.remove('remove-from-display');
+  displayLibrary();
+}
+
+// Run functions below here====================
+
 addBookToLibrary('Poop', 'Turd Burglar', '200');
-let bookCardTest = createBookCard(myLibrary[0]);
-displayBookCard(bookCardTest);
+addBookToLibrary('Schmoop', 'Schmoop Man', '275');
+displayLibrary();
 
