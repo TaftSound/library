@@ -15,7 +15,6 @@
       <h1 class="logo-text">Library</h1>
     </div>
     <div class="user-info">
-      <button>New</button>
       <img src="./images/user (1).png" alt="user-icon">
       <h3 class="user-account-link">Earl Ragnar</h3>
     </div>
@@ -25,20 +24,36 @@
       <div class="book-card">
         <button class="delete-button"><img src="./images/close-circle-outline.png" alt="delete-icon"></button>
         <div class="card-content">
+          <h3>The Hobbit</h3>
           <a href="./index.html">
             <img src="./images/book.png" alt="book-icon" class="book-icon">
           </a>
-          <h3>The Hobbit</h3>
           <h4>By: J.R.R. Tolkien</h4>
           <h4>Pages: 457</h4>
         </div>
-        <button class="read-button"><img src="./images/book-outline.png" alt="unread-icon"><h4>Unread</h4></button>
+        <button class="read-button unread">Unread</button>
       </div>
       <div class="new-card">
         <button></button>
-        <img src="./images/new.png" alt="new card button">
+        <img src="./images/add.png" alt="new card button">
       </div>
     </div>
   </div>
+    <div class="form-container remove-from-display">
+      <div class="background-defocus"></div>
+      <form action="" class="new-book-form">
+        <button class="delete-button"><img src="./images/close-circle-outline.png" alt="delete-icon"></button>
+        <h1>New Book:</h1>
+        <div class="form-input-grid">
+          <label for="title-input">Title:</label>
+          <input type="text" id="title-input" name="title-input">
+          <label for="author-input">Author:</label>
+          <input type="text" id="author-input" name="author-input">
+          <label for="pages-input">Pages:</label>
+          <input type="text" id="pages-input" name="pages-input">
+          <button type="button">Submit</button>
+        </div>
+      </form>
+    </div>
 </body>
 </html>

@@ -27,6 +27,8 @@ body {
   align-items: center;
   background-color: var(--background-color);
   padding: 10px 25px;
+  z-index: 4;
+  box-shadow: 0px 5px 15px var(--secondary-background-color);
 }
 
 .logo {
@@ -43,7 +45,7 @@ body {
 
 .user-info {
   display: grid;
-  grid-template-columns: .8fr min-content 1fr;
+  grid-template-columns: min-content 1fr;
   gap: 5px 10px;
   place-items: center;
 }
@@ -86,17 +88,17 @@ h4 {
 
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 15px;
-  padding: 25px;
+  padding: 35px;
   justify-items: center;
 }
 
 .book-card,
 .new-card {
   background-color: var(--background-color);
-  width: clamp(185px, 100%, 225px);
+  width: clamp(225px, 100%, 245px);
   box-sizing: border-box;
   padding: 25px;
   padding-bottom: 10px;
@@ -110,13 +112,8 @@ h4 {
 }
 
 .book-card:hover {
-  border-color: rgba(255, 255, 255, 0.05);
-  background-color: rgb(50, 50, 50);
-}
-
-.new-card:hover {
-  border-color: rgba(255, 255, 255, 0.05);
-  background-color: rgb(25, 25, 25);
+  /* border-color: rgba(255, 255, 255, 0.05); */
+  background-color: rgb(55, 55, 55);
 }
 
 .card-content {
@@ -145,38 +142,39 @@ h4 {
   right: 7.5px;
 }
 
-.read-button {
+.read-button.unread {
+  border: solid var(--light-text-color);
+  padding: 5px 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   background-color: transparent;
-  border: none;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--light-text-color);
-  margin: 20px 0px;
-}
-
-.read-button h4 {
-  display: flex;
-  align-items: center;
-  padding: 0px 10px;
   border-radius: 5px;
-  background-color: var(--main-color);
+  color: var(--light-text-color);
+  opacity: 40%;
+}
+
+.read-button.unread:hover {
+  opacity: 70%;
+}
+
+.delete-button img {
   height: 25px;
 }
 
-.delete-button img,
-.read-button img {
-  height: 25px;
+.delete-button img {
+  opacity: 35%;
 }
 
-.delete-button img:hover,
-.read-button:hover {
+.delete-button img:hover {
+  opacity: 70%;
+}
+
+.delete-button img:hover {
   cursor: pointer;
 }
 
 .book-icon {
-  height: 80px;
+  height: 90px;
   margin: 10px;
   align-self: center;
   transition: .3s ease-out;
@@ -189,11 +187,17 @@ h4 {
 .new-card {
   padding: 0px;
   background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.05);
+  border-color: rgb(30, 30, 30);
+}
+
+.new-card:hover {
+  border-color: rgb(25, 25, 25);
+  background-color: rgb(25, 25, 25);
 }
 
 .new-card img {
   height: 80px;
+  transform: rotate(-90deg);
 }
 
 .new-card button {
@@ -209,4 +213,67 @@ h4 {
 
 .new-card button:hover {
   cursor: pointer;
+}
+
+.form-container {
+  position: fixed;
+  overflow: scroll;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.new-book-form {
+  position: absolute;
+  top: clamp(160px, calc(15vh + 110px), 360px);
+  bottom: clamp(50px, 20vh, 250px);
+  left: clamp(45px, 15vw, 200px);
+  right: clamp(45px, 15vw, 200px);
+  min-height: min-content;
+  background-color: var(--background-color);
+  padding: 7vh 10vw;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 15px black;
+  z-index: 3;
+}
+
+.background-defocus {
+  position: fixed;
+  top: 110px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: calc(100vh - 110px);
+  z-index: 2;
+  background-color: black;
+  opacity: 50%;
+}
+
+.form-input-grid {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: baseline;
+  gap: 15px 10px;
+}
+
+input {
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.form-input-grid button {
+  grid-column-start: 2;
+  justify-self: end;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.remove-from-display {
+  display: none;
 }
