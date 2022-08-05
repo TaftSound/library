@@ -98,7 +98,7 @@ h4 {
 .book-card,
 .new-card {
   background-color: var(--background-color);
-  width: clamp(225px, 100%, 245px);
+  width: clamp(225px, 100%, 265px);
   box-sizing: border-box;
   padding: 25px;
   padding-bottom: 10px;
@@ -142,15 +142,25 @@ h4 {
   right: 7.5px;
 }
 
-.read-button.unread {
-  border: solid var(--light-text-color);
+.read-button {
   padding: 5px 10px;
   margin-top: 15px;
   margin-bottom: 10px;
-  background-color: transparent;
   border-radius: 5px;
+  width: 68px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: solid var(--light-text-color);
   color: var(--light-text-color);
-  opacity: 40%;
+  font-weight: bold;
+}
+
+.read-button.unread {
+  font-weight: normal;
+  border: solid var(--light-text-color);
+  color: var(--light-text-color);
+  background-image: none;
+  background-color: transparent;
+  opacity: 30%;
 }
 
 .read-button.unread:hover {

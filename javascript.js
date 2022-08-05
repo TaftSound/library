@@ -35,7 +35,9 @@ function createBookCard(bookObject, index) {
   bookImage.alt = 'book-icon';
   bookImage.classList.add('book-icon');
   readButton.classList.add('read-button');
-  readButton.classList.add('unread');
+  if (!bookObject.haveRead) {
+    readButton.classList.add('unread');
+  }
 
   title.textContent = bookObject.title;
   author.textContent = `By: ${bookObject.author}`;
@@ -43,6 +45,7 @@ function createBookCard(bookObject, index) {
   readButton.textContent = 'Unread';
 
   deleteButton.addEventListener('click', deleteThisCard);
+  readButton.addEventListener('click', changeReadStatus);
 
   deleteButton.appendChild(deleteButtonImg);
   bookCard.appendChild(deleteButton);
@@ -62,6 +65,23 @@ function createBookCard(bookObject, index) {
     console.log(myLibrary[index]);
     myLibrary.splice(index, 1);
     displayLibrary();
+  }
+  
+  function changeReadStatus() {
+    if (bookObject.haveRead) {
+      bookObject.haveRead = false;
+      console.log(bookObject.haveRead);
+      console.log(readButton);
+      readButton.classList.add('unread');
+      readButton.textContent = 'Unread';
+      return;
+    }
+    console.log(bookObject.haveRead);
+    console.log(readButton);
+    bookObject.haveRead = true;
+    readButton.classList.remove('unread');
+    readButton.textContent = 'Read';
+    return;
   }
 }
 
@@ -137,7 +157,7 @@ function undoSubmitCardForm() {
 
 // Run functions below here====================
 
-// addBookToLibrary('Poop', 'Turd Burglar', '200');
-// addBookToLibrary('Schmoop', 'Schmoop Man', '275');
+addBookToLibrary('Poop', 'Turd Burglar', '200');
+addBookToLibrary('Schmoop', 'Schmoop Man', '275');
 displayLibrary();
 
