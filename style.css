@@ -17,6 +17,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--light-text-color);
+  font-size: 18px;
   background-color: var(--secondary-background-color);
 }
 
@@ -234,17 +235,22 @@ h4 {
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .new-book-form {
-  position: absolute;
+  position: relative;
   top: clamp(160px, calc(15vh + 110px), 360px);
-  bottom: clamp(50px, 20vh, 250px);
-  left: clamp(45px, 15vw, 200px);
-  right: clamp(45px, 15vw, 200px);
+  max-width: 500px;
+  min-width: 400px;
+  box-sizing: border-box;
   min-height: min-content;
   background-color: var(--background-color);
-  padding: 7vh 10vw;
+  padding: 45px 35px;
+  padding-bottom: 45px;
   border-radius: 10px;
   box-shadow: 0px 0px 25px 15px black;
   z-index: 3;
@@ -263,12 +269,11 @@ h4 {
 }
 
 .form-input-grid {
-  margin-top: 25px;
-  margin-bottom: 10px;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: min-content 1fr;
   align-items: baseline;
-  gap: 15px 10px;
+  gap: 45px 10px;
 }
 
 input {
@@ -281,9 +286,13 @@ input {
 .form-input-grid button {
   grid-column-start: 2;
   justify-self: end;
-  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 7.5px 12.5px;
   border-radius: 5px;
   border: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 18px;
 }
 
 .remove-from-display {

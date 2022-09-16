@@ -74,7 +74,6 @@ function createBookCard(bookObject, index) {
   function deleteThisCard() {
     removeAllChildren(bookCard);
     bookGrid.removeChild(bookCard);
-    console.log(myLibrary[index]);
     myLibrary.splice(index, 1);
     displayLibrary();
   }
@@ -82,14 +81,10 @@ function createBookCard(bookObject, index) {
   function changeReadStatus() {
     if (bookObject.haveRead) {
       bookObject.haveRead = false;
-      console.log(bookObject.haveRead);
-      console.log(readButton);
       readButton.classList.add('unread');
       readButton.textContent = 'Unread';
       return;
     }
-    console.log(bookObject.haveRead);
-    console.log(readButton);
     bookObject.haveRead = true;
     readButton.classList.remove('unread');
     readButton.textContent = 'Read';
@@ -144,7 +139,10 @@ function displayNewCardForm() {
   pages.value = '';
   bookGrid.classList.add('remove-from-display');
   newCardForm.classList.remove('remove-from-display');
-  submitButton.addEventListener('click', submitNewCardForm);
+  submitButton.addEventListener('click', () => {
+    if (!title.checkValidity()) {  }
+    submitNewCardForm()
+  });
   deleteButton.addEventListener('click', undoSubmitCardForm);
 }
 
