@@ -269,6 +269,7 @@ h4 {
 }
 
 .form-input-grid {
+  position: relative;
   margin-top: 50px;
   display: grid;
   grid-template-columns: min-content 1fr;
@@ -278,9 +279,40 @@ h4 {
 
 input {
   outline: none;
-  padding: 5px 10px;
+  font-size: 16px;
+  padding: 7.5px 12.5px;
   border-radius: 5px;
   border: none;
+  position: relative;
+  z-index: 2;
+}
+
+.form-input-grid p {
+  opacity: 0%;
+  position: absolute;
+  grid-column: 2/3;
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  top: 80%;
+  background-color: red;
+  z-index: 1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.title-error {
+  grid-row: 1/2;
+}
+.author-error {
+  grid-row: 2/3;
+}
+.pages-error {
+  grid-row: 3/4;
+}
+.form-input-grid .show-error {
+  opacity: 100%;
 }
 
 .form-input-grid button {

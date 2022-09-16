@@ -133,17 +133,32 @@ function displayNewCardForm() {
   const title = document.getElementById('title-input');
   const author = document.getElementById('author-input');
   const pages = document.getElementById('pages-input');
+  const errorMessages = document.querySelectorAll('.form-input-grid > p')
   
   title.value = '';
   author.value = '';
   pages.value = '';
   bookGrid.classList.add('remove-from-display');
   newCardForm.classList.remove('remove-from-display');
-  submitButton.addEventListener('click', () => {
-    if (!title.checkValidity()) {  }
-    submitNewCardForm()
+
+
+  submitButton.addEventListener('click', (event) => {
+    let isValid = true
+    if (displayErrorMessage(title, errorMessages[0])) { isValid = false }
+    if (displayErrorMessage(author, errorMessages[1])) { isValid = false }
+    if (displayErrorMessage(pages, errorMessages[2])) { isValid = false }
+    if (isValid) { submitNewCardForm() }
   });
   deleteButton.addEventListener('click', undoSubmitCardForm);
+}
+
+function displayErrorMessage(inputElement, errorContainer) {
+  if (inputElement.checkValidity()) {
+    errorContainer.classList.remove('show-error')
+    return false
+  }
+  errorContainer.classList.add('show-error')
+  return true
 }
 
 function submitNewCardForm() {
