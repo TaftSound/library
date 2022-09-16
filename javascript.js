@@ -140,6 +140,9 @@ function displayNewCardForm() {
   pages.value = '';
   bookGrid.classList.add('remove-from-display');
   newCardForm.classList.remove('remove-from-display');
+  errorMessages[0].classList.remove('show-error')
+  errorMessages[1].classList.remove('show-error')
+  errorMessages[2].classList.remove('show-error')
 
 
   submitButton.addEventListener('click', (event) => {
